@@ -14,37 +14,21 @@ public class HelloSelenium {
 
     public static void main(String[] args) {
 
-     //Setup the browser driver
+        //Setup the browser driver
         WebDriverManager.chromedriver().setup();
 
-        //Create an instance of the browser
+        //Create an instance of Chrome browser browser
         WebDriver driver = new ChromeDriver();
 
 
         //Navigate to the login page
         driver.get("http://hrm.pragmatictestlabs.com/");
 
-        //Type the username 
 
-
-        //Type the password
-
-        //Click the login button
-
-
-
-
+        //Closing the browser instance
         driver.close();
 
-
-
-
-
-
-
     }
-
-
 
 
 }
