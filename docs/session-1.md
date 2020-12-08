@@ -1,4 +1,4 @@
-# Session 1 : 8 Dec 2020
+# Session 1 : 8 Dec 2020 
   1. Introduction to Selenium and Test Automation 
   2. Creating a maven project with IDEA 
   3. Adding dependencies to POM.xml 
