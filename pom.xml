@@ -15,7 +15,7 @@
         <testng.version>7.1.0</testng.version>
         <webdrivermanager.version>4.2.2</webdrivermanager.version>
     </properties>
-    
+
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
