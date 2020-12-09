@@ -15,3 +15,8 @@
   Login with password 
   Login with invalid password 
   Case sensitivity of the password 
+  
+  
+          
+ # Session 2 videos
+ [![Part 1](https://i.imgur.com/lhRfcy2.png)](https://youtu.be/tEyk2i-DLeU)
