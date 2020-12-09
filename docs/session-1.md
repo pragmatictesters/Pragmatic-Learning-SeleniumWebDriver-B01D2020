@@ -7,3 +7,6 @@
         * Launching the browser 
         * Navigating to a given URL 
         
+        
+ # Session 1 video 
+ [![Watch the video](https://i.imgur.com/4AsENMh.png)](https://youtu.be/xdexjppgA0k)
