@@ -10,23 +10,29 @@
 
 
 
+    <properties>
+        <selenium-java.version>4.0.0-alpha-7</selenium-java.version>
+        <testng.version>7.1.0</testng.version>
+        <webdrivermanager.version>4.2.2</webdrivermanager.version>
+    </properties>
+    
     <dependencies>
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
-            <version>4.0.0-alpha-7</version>
+            <version>${selenium-java.version}</version>
         </dependency>
 
         <dependency>
             <groupId>org.testng</groupId>
             <artifactId>testng</artifactId>
-            <version>7.1.0</version>
+            <version>${testng.version}</version>
         </dependency>
 
         <dependency>
             <groupId>io.github.bonigarcia</groupId>
             <artifactId>webdrivermanager</artifactId>
-            <version>4.2.2</version>
+            <version>${webdrivermanager.version}</version>
         </dependency>
 
     </dependencies>
