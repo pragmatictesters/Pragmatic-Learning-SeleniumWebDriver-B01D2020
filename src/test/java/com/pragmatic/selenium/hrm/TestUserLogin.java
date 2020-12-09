@@ -133,4 +133,41 @@ public class TestUserLogin {
     }
 
 
+    @Test
+    public void testUserLoginWithBlankPassword() {
+
+        //Type the username
+        driver.findElement(By.id("txtUsername")).sendKeys("Admin");
+
+
+        //Type the password
+        driver.findElement(By.id("txtPassword")).sendKeys("");
+        driver.findElement(By.id("txtPassword")).submit();
+
+        //Verify the error message
+        Assert.assertEquals(driver.findElement(By.id("spanMessage")).getText(), "Password cannot be empty");
+
+    }
+
+
+@Test
+    public void testUserLoginWithInvalidPassword() {
+        //Type the username
+        driver.findElement(By.id("txtUsername")).sendKeys("Admin");
+
+        //Type the password
+        driver.findElement(By.id("txtPassword")).sendKeys("TEST");
+        driver.findElement(By.id("txtPassword")).submit();
+
+        //Verify the error message
+        Assert.assertEquals(driver.findElement(By.id("spanMessage")).getText(), "Invalid credentials");
+
+    }
+
+
+
+
+
+
+
 }
