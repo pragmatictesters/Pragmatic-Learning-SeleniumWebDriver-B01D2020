@@ -8,7 +8,7 @@ Pragmatic Learning trainees.
 ## Tools Used 
    1. IntelliJ IDEA community Edition 
    2. Maven
-   3. JDK 15  [Will not work with 1.8]
+   3. JDK 
    4. Selenium WebDriver 
    5. TestNG 
    6. ReportNG , ExtentReport, ExtentReportTestNGAdapter
