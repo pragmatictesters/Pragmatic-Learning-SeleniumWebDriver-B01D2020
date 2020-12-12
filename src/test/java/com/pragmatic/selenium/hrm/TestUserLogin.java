@@ -19,19 +19,22 @@ import org.testng.annotations.Test;
 public class TestUserLogin {
 
     private WebDriver driver;
+    private String BROWSER_TYPE ="firefox";
 
     @BeforeClass
     public void beforeClass() {
-        WebDriverManager.chromedriver().setup();
+
+        BrowserManager.setupDrivers(BROWSER_TYPE);
+        //WebDriverManager.chromedriver().setup();
+
     }
 
 
     @BeforeMethod
-    private WebDriver beforeMethod() {
-        driver = new ChromeDriver();
-
+    private void beforeMethod() {
+        driver = BrowserManager.launchBrowser(BROWSER_TYPE);
+        //driver = new ChromeDriver();
         driver.get("http://hrm.pragmatictestlabs.com");
-        return driver;
     }
 
     @AfterMethod
@@ -42,7 +45,6 @@ public class TestUserLogin {
     @Test
     public void testValidUserLogin() {
 
-        WebDriver driver = beforeMethod();
         //Type the username
         driver.findElement(By.id("txtUsername")).sendKeys("Admin");
 
@@ -110,6 +112,8 @@ public class TestUserLogin {
         //Type the password
         driver.findElement(By.id("txtPassword")).sendKeys("");
         driver.findElement(By.id("txtPassword")).submit();
+
+
 
         //Verify the error message
         Assert.assertEquals(driver.findElement(By.id("spanMessage")).getText(), "Username cannot be empty");

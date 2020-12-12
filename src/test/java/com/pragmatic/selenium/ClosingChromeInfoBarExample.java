@@ -17,7 +17,6 @@ public class ClosingChromeInfoBarExample {
 
     public static void main(String[] args) {
 
-        //Setup the browser driver
         WebDriverManager.chromedriver().setup();
 
         //Create an instance of Chrome browser browser
