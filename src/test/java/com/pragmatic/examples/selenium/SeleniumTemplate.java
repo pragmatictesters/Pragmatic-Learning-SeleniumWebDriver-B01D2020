@@ -18,7 +18,6 @@ public class SeleniumTemplate {
     private static final String BASE_URL = "";
     private ChromeDriver driver;
 
-
     @BeforeClass
     public void beforeClass() {
         WebDriverManager.chromedriver().setup();
