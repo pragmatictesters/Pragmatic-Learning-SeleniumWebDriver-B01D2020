@@ -12,6 +12,8 @@ import org.openqa.selenium.opera.OperaDriver;
 import org.openqa.selenium.safari.SafariDriver;
 
 import java.util.Collections;
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * Created by Pragmatic Test Labs (Private) Limited
@@ -60,6 +62,11 @@ public class BrowserManager {
                 options.setExperimentalOption("useAutomationExtension", false);
                 options.setExperimentalOption("excludeSwitches",
                         Collections.singletonList("enable-automation"));
+                Map<String, Object> prefs = new HashMap<String, Object>();
+                prefs.put("credentials_enable_service", false);
+                prefs.put("profile.password_manager_enabled", false);
+                options.setExperimentalOption("prefs", prefs);
+
                 driver = new ChromeDriver(options);
             }case "chrome-headless"  -> {
                 ChromeOptions options = new ChromeOptions();
@@ -87,8 +94,10 @@ public class BrowserManager {
 
         }
 
-        driver.manage().window().maximize();
+        //driver.manage().window().maximize();
         return driver;
 
     }
+
+
 }
