@@ -15,7 +15,7 @@ import org.testng.annotations.Test;
 public class SeleniumTemplate {
 
 
-    private static final String BASE_URL = "https://www.daraz.lk/";
+    private static final String BASE_URL = "";
     private ChromeDriver driver;
 
 
@@ -27,6 +27,7 @@ public class SeleniumTemplate {
     @BeforeMethod
     public void beforeMethod() {
         driver = new ChromeDriver();
+        driver.manage().window().maximize();
         driver.get(BASE_URL);
     }
 
