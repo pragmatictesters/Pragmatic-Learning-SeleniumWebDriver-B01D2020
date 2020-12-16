@@ -1,15 +1,12 @@
 package com.pragmatic.selenium.hrm;
 
 import com.github.javafaker.Faker;
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
@@ -44,14 +41,14 @@ public class TestAddNewEmployee {
 
     @BeforeClass
     public void beforeClass() {
-        WebDriverManager.chromedriver().setup();
+        BrowserManager.setupDrivers("chrome");
     }
 
 
     @BeforeMethod
     private WebDriver beforeMethod() {
         faker = new Faker();
-        driver = new ChromeDriver();
+        driver = BrowserManager.launchBrowser("chrome");
 
         driver.get("http://hrm.pragmatictestlabs.com");
         login();
@@ -61,14 +58,21 @@ public class TestAddNewEmployee {
 
     @AfterMethod
     private void afterMethod() {
-        //driver.close();
+        driver.close();
     }
 
     @Test
-    public void testAddNewEmployeeWithMandatoryInfo() {
+    public void testAddNewEmployeeWithMandatoryInfo() throws InterruptedException {
         driver.findElement(TXT_FIRSTNAME).sendKeys(faker.name().firstName());
         driver.findElement(TXT_LASTNAME).sendKeys(faker.name().lastName());
         driver.findElement(BTN_SAVE).click();
+
+        driver.findElement(By.id("welcome")).click();
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        WebElement lnkLogout = wait.until(ExpectedConditions.elementToBeClickable(By.xpath("//a[text()='Logout']")));
+        lnkLogout.click();
+
+        Thread.sleep(2000);
     }
 
 
@@ -100,9 +104,6 @@ public class TestAddNewEmployee {
         driver.findElement(TXT_LASTNAME).sendKeys(lastName);
         driver.findElement(CHK_LOGIN).click();
 
-//        Select status = new Select(driver.findElement(LST_STATUS));
-//        status.selectByVisibleText("Disabled");
-
 
         Select status = new Select(driver.findElement(LST_STATUS));
         status.selectByVisibleText("Disabled");
@@ -120,10 +121,6 @@ public class TestAddNewEmployee {
 
 
 
-
-
-
-
     @Test
     public void testAddNewEmployeeWithProfileImage() {
         driver.findElement(TXT_FIRSTNAME).sendKeys("Janesh");
@@ -132,7 +129,6 @@ public class TestAddNewEmployee {
 
         driver.findElement(BTN_SAVE).click();
     }
-
 
 
 
@@ -145,10 +141,7 @@ public class TestAddNewEmployee {
     private void navigateToAddEmployeePage() {
         //Click the PIM menu
         driver.findElement(MNU_PIM).click();
-
         WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
-
-
         //Click the Add Employee menu
         wait.until(ExpectedConditions.elementToBeClickable(MNU_ADD_EMPLOYEE)).click();
 
