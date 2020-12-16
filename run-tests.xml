@@ -1,0 +1,21 @@
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd" >
+
+
+<suite name="hrm-tests">
+
+    <test name="login-tests" enabled="true">
+        <classes>
+            <class name="com.pragmatic.selenium.hrm.TestUserLogin"></class>
+        </classes>
+    </test>
+
+    <test name="hrm-tests" enabled="true">
+
+        <packages>
+            <package name="com.pragmatic.selenium.hrm"/>
+        </packages>
+
+    </test>
+
+
+</suite>
