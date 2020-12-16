@@ -3,6 +3,7 @@
   
 ## Extra 
   1. Code refactoring 
+  2. IDEA shortcuts 
  
 
 

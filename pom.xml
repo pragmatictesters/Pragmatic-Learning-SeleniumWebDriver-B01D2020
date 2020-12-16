@@ -20,7 +20,6 @@
         </plugins>
     </build>
 
-
     <properties>
         <selenium-java.version>4.0.0-alpha-7</selenium-java.version>
         <testng.version>7.1.0</testng.version>
@@ -52,9 +51,6 @@
             <artifactId>javafaker</artifactId>
             <version>${javafaker.version}</version>
         </dependency>
-
-
-
 
 
     </dependencies>
