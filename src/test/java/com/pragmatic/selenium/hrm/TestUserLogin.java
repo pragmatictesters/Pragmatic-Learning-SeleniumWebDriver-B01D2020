@@ -1,15 +1,17 @@
 package com.pragmatic.selenium.hrm;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
+import java.time.Duration;
 
 /**
  * Created by Pragmatic Test Labs (Private) Limited
@@ -19,28 +21,26 @@ import org.testng.annotations.Test;
 public class TestUserLogin {
 
     private WebDriver driver;
-    private String BROWSER_TYPE ="firefox";
+    private String BROWSER_TYPE = "safari";
 
     @BeforeClass
     public void beforeClass() {
-
         BrowserManager.setupDrivers(BROWSER_TYPE);
-        //WebDriverManager.chromedriver().setup();
-
     }
 
 
     @BeforeMethod
     private void beforeMethod() {
         driver = BrowserManager.launchBrowser(BROWSER_TYPE);
-        //driver = new ChromeDriver();
         driver.get("http://hrm.pragmatictestlabs.com");
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(5));
     }
 
     @AfterMethod
     private void afterMethod() {
         driver.close();
     }
+
 
     @Test
     public void testValidUserLogin() {
@@ -58,8 +58,6 @@ public class TestUserLogin {
         String msgWelcome = driver.findElement(By.id("welcome")).getText();
 
         Assert.assertEquals(msgWelcome, "Welcome Admin");
-
-
     }
 
 
@@ -114,7 +112,6 @@ public class TestUserLogin {
         driver.findElement(By.id("txtPassword")).submit();
 
 
-
         //Verify the error message
         Assert.assertEquals(driver.findElement(By.id("spanMessage")).getText(), "Username cannot be empty");
 
@@ -154,24 +151,41 @@ public class TestUserLogin {
     }
 
 
-@Test
+    @Test
     public void testUserLoginWithInvalidPassword() {
         //Type the username
         driver.findElement(By.id("txtUsername")).sendKeys("Admin");
 
         //Type the password
-        driver.findElement(By.id("txtPassword")).sendKeys("TEST");
+        driver.findElement(By.id("txtPassword")).sendKeys("PTEst");
         driver.findElement(By.id("txtPassword")).submit();
 
         //Verify the error message
+        waitForError("Invalid credentials");
         Assert.assertEquals(driver.findElement(By.id("spanMessage")).getText(), "Invalid credentials");
 
     }
 
+    @Test(dataProvider = "user-credentials", dataProviderClass = HRMTestData.class)
+    public void testInvalidUserLogin(String username, String password, String expectedError) throws InterruptedException {
+        //Type the username
+        driver.findElement(By.id("txtUsername")).sendKeys(username);
 
+        //Type the password
+        driver.findElement(By.id("txtPassword")).sendKeys(password);
+        driver.findElement(By.id("txtPassword")).submit();
 
+        //Verify the error message
+        waitForError(expectedError);
+        Assert.assertEquals(driver.findElement(By.id("spanMessage")).getText(), expectedError);
 
+    }
 
+    private void waitForError(String error_message) {
+        WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(5));
+        wait.until(ExpectedConditions.presenceOfElementLocated(By.id("spanMessage")));
+        wait.until(ExpectedConditions.textToBe(By.id("spanMessage"), error_message));
+    }
 
 
 }
