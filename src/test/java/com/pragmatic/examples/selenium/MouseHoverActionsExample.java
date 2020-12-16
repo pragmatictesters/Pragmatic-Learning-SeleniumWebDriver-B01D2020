@@ -47,6 +47,7 @@ public class MouseHoverActionsExample {
 
         Actions actions = new Actions(driver);
 
+
         //Mouse over actions
         actions.moveToElement(driver.findElement(By.xpath("//span[contains(text(),'Electronic Devices')]")))
                 .pause(Duration.ofMillis(500))
@@ -63,5 +64,6 @@ public class MouseHoverActionsExample {
 
 
     }
+
 
 }

@@ -1,4 +1,4 @@
-package com.pragmatic.selenium;
+package com.pragmatic.examples.selenium;
 
 import org.testng.annotations.Test;
 

@@ -1,5 +1,6 @@
 package com.pragmatic.selenium.hrm.tests;
 
+import com.pragmatic.selenium.hrm.HRMConstants;
 import com.pragmatic.selenium.hrm.pages.LandingPage;
 import com.pragmatic.selenium.hrm.pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
@@ -19,7 +20,7 @@ import org.testng.annotations.Test;
 public class LoginTest {
 
 
-    private static final String BASE_URL = "http://hrm.pragmatictestlabs.com";
+    private static final String BASE_URL = HRMConstants.BASE_URL;
     private WebDriver driver;
 
     @BeforeClass

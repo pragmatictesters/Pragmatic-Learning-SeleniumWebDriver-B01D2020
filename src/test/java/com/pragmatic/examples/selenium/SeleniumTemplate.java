@@ -1,6 +1,7 @@
 package com.pragmatic.examples.selenium;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
@@ -16,7 +17,7 @@ public class SeleniumTemplate {
 
 
     private static final String BASE_URL = "";
-    private ChromeDriver driver;
+    private WebDriver driver;
 
     @BeforeClass
     public void beforeClass() {
@@ -38,7 +39,7 @@ public class SeleniumTemplate {
 
 
     @Test
-    public void testProductDiscount() {
+    public void test() {
         System.out.println("SeleniumTemplate.testProductDiscount");
     }
 

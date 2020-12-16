@@ -1,4 +1,4 @@
-package com.pragmatic.selenium;
+package com.pragmatic.examples.selenium;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;

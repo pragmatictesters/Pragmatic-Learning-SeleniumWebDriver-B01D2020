@@ -41,13 +41,19 @@ public class DarazXPathExamples {
     }
 
 
+
     @Test
     public void testProductDiscount() {
-        String productDescription = "Power";
+        String productDescription = "Smart";
         String xpathProduct = String.format("//div[contains(text(),'%s')]", productDescription);
         String xpathProductPrice = String.format("%s/following-sibling::div[@class='fs-card-price']/*[@class='price']", xpathProduct);
         String xpathOriginalPrice = String.format("%s/following-sibling::div[@class='fs-card-origin-price']/span/span[@class='price']", xpathProduct);
         String xpathDiscount = String.format("%s/following-sibling::div[@class='fs-card-origin-price']/span[@class='fs-discount']", xpathProduct);
+
+
+        System.out.println("xpathDiscount = " + xpathDiscount);
+        System.out.println("xpathOriginalPrice = " + xpathOriginalPrice);
+        System.out.println("xpathProductPrice = " + xpathProductPrice);
 
 
         String price = driver.findElement(By.xpath(xpathProductPrice)).getText();

@@ -1,13 +1,8 @@
-package com.pragmatic.selenium;
+package com.pragmatic.examples.selenium;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.openqa.selenium.Dimension;
-import org.openqa.selenium.Point;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
-import org.openqa.selenium.chrome.ChromeOptions;
-
-import java.util.Collections;
 
 /**
  * Created by Pragmatic Test Labs (Private) Limited
