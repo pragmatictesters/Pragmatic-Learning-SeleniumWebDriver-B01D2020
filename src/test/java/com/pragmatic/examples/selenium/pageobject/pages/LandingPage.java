@@ -1,4 +1,4 @@
-package com.pragmatic.examples.pageobject.pages;
+package com.pragmatic.examples.selenium.pageobject.pages;
 
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;

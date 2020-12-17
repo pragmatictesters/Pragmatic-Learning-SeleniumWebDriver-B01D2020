@@ -1,8 +1,8 @@
-package com.pragmatic.examples.pageobject.tests;
+package com.pragmatic.examples.selenium.pagefactory.tests;
 
+import com.pragmatic.examples.selenium.pagefactory.pages.LandingPage;
+import com.pragmatic.examples.selenium.pagefactory.pages.LoginPage;
 import com.pragmatic.selenium.hrm.HRMConstants;
-import com.pragmatic.selenium.hrm.pages.LandingPage;
-import com.pragmatic.selenium.hrm.pages.LoginPage;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -58,8 +58,8 @@ public class LoginTest {
     @Test
     public void testLoginWithBlankUsernameAndBlankPassword() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.typeUsername("")
-                .typePassword("")
+        loginPage.clearUsername()
+                .clearPassword()
                 .clickLogin();
         //Verify the error message
         Assert.assertEquals(loginPage.getError(), "Username cannot be empty");
@@ -68,7 +68,7 @@ public class LoginTest {
     @Test
     public void testLoginWithBlankUsername() {
         LoginPage loginPage = new LoginPage(driver);
-        loginPage.typeUsername("")
+        loginPage.clearUsername()
                 .typePassword("PTL@#321")
                 .clickLogin();
         //Verify the error message

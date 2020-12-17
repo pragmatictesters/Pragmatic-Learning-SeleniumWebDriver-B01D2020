@@ -16,7 +16,7 @@ import org.testng.annotations.Test;
 public class SeleniumTemplate {
 
 
-    private static final String BASE_URL = "";
+    private static final String BASE_URL = "http://hrm.pragmatictestlabs.com/";
     private WebDriver driver;
 
     @BeforeClass
@@ -40,7 +40,7 @@ public class SeleniumTemplate {
 
     @Test
     public void test() {
-        System.out.println("SeleniumTemplate.testProductDiscount");
+        //Your test will go here
     }
 
 }
