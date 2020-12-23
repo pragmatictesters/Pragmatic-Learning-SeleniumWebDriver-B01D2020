@@ -1,4 +1,4 @@
-package com.pragmatic.examples.selenium;
+package com.pragmatic.examples.selenium.mouse;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
